@@ -1,0 +1,10 @@
+main: me.pauzen.teamz.Teamz
+name: Teamz
+version: 1.0
+author: Fil da guy.
+description: TEAMZ!!!!!.
+commands:
+  sendcoords:
+  teamchat:
+    aliases: [tc]
+  team:
