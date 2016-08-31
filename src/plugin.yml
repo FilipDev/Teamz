@@ -8,3 +8,4 @@ commands:
   teamchat:
     aliases: [tc]
   team:
+    aliases: [teams, teamz]

@@ -18,7 +18,7 @@ import org.bukkit.entity.Player;
 public class KillsCommand extends TeamCommandExecutor {
     @Override
     public void onCommand(Player player, String[] args) {
-        Player target = args.length > 1 ? Bukkit.getPlayer(args[0]) : player;
+        Player target = args.length >= 1 ? Bukkit.getPlayer(args[0]) : player;
         if (target == null) {
             player.sendMessage(ChatColor.RED + "Player not found.");
             return;

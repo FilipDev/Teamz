@@ -37,7 +37,7 @@ public class RequestManager implements Listener {
 
     public void sendRequest(Player sender, Player player, Team team) {
         if (!requestMap.containsKey(player)) {
-            if (Teamz.getInstance().getTeam(player) != null) {
+            if (Teamz.getInstance().getTeam(player) == null) {
                 this.requestMap.put(player, new Request(team, player));
                 player.sendMessage(ChatColor.YELLOW + "You have received a team request from: " + ChatColor.GREEN + team.toString());
                 player.sendMessage(ChatColor.GOLD + "Use " + ChatColor.GREEN + "/team accept " + ChatColor.GOLD + "or " + ChatColor.RED + "/team deny" + ChatColor.GOLD + " to respond.");

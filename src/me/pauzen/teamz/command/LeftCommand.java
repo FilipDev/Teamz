@@ -15,7 +15,13 @@ public class LeftCommand extends TeamCommandExecutor {
     @Override
     public void onCommand(Player player, String[] args) {
         Set<Team> teams = new HashSet<>();
-        teams.addAll(TeamManager.getInstance().getTeams().values());
+        for (Team team : TeamManager.getInstance().getTeams().values()) {
+            for (Player member : team.getPlayers()) {
+                if (member.getLocation().getWorld().getName().equals("uhcworld")) {
+                    teams.add(team);
+                }
+            }
+        }
         player.sendMessage("There are " + teams.size() + " teams remaining.");
     }
 }

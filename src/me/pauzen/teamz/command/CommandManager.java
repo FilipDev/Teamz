@@ -27,9 +27,11 @@ public class CommandManager implements CommandExecutor {
         teamCommands.put("invite", new InviteCommand());
         teamCommands.put("solo", new CreateCommand());
         teamCommands.put("create", new CreateCommand());
+        teamCommands.put("leave", new LeaveCommand());
         teamCommands.put("list", new ListCommand());
         teamCommands.put("kills", new KillsCommand());
         teamCommands.put("last", new LastCommand());
+        teamCommands.put("left", new LeftCommand());
         teamCommands.put("reset", new ResetCommand());
         teamCommands.put("clear", new ResetCommand());
         teamCommands.put("kick", new KickCommand());
@@ -89,7 +91,7 @@ public class CommandManager implements CommandExecutor {
                     String[] newArgs = Arrays.copyOfRange(args, 1, args.length);
                     if (commandSender instanceof Player) {
                         Player sender = (Player) commandSender;
-                        if (sender.getWorld().getName().equals("SPANW") || true) {
+                        if (sender.getWorld().getName().equals("SPAWN")) {
                             executor.onCommand(sender, newArgs);
                         } else {
                             sender.sendMessage(ChatColor.RED + "Command cannot be executed in this world.");
