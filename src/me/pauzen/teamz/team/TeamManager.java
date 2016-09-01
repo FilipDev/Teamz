@@ -13,10 +13,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class TeamManager implements Listener {
 
@@ -42,6 +39,12 @@ public class TeamManager implements Listener {
     }
 
     public Map<UUID, Team> getTeams() {
+        return teams;
+    }
+
+    public Set<Team> getTeamSet() {
+        Set<Team> teams = new HashSet<>();
+        teams.addAll(this.teams.values());
         return teams;
     }
 
