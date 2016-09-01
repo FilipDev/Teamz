@@ -17,11 +17,10 @@ public class KillListener implements Listener {
     public void onKill(PlayerDeathEvent event) {
         Player killer = event.getEntity().getKiller();
         Team team = Teamz.getInstance().getTeam(killer);
-        if (team != null) {
-            if (killer != null) {
+        if (killer != null) {
+            if (team != null) {
                 team.setKills(team.getKills() + 1);
             }
-            //TeamManager.getInstance().unregisterTeam(event.getEntity());
         }
     }
 

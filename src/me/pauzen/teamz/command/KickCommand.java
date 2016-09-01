@@ -20,7 +20,7 @@ public class KickCommand extends TeamCommandExecutor {
                 if (args.length == 1) {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
-                        TeamManager.getInstance().unregisterTeam(target);
+                        TeamManager.getInstance().unregisterTeam(target.getUniqueId());
                     } else {
                         player.sendMessage(ChatColor.RED + "You must specify a valid player to kick.");
                     }

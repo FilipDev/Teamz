@@ -17,7 +17,7 @@ public class LeaveCommand extends TeamCommandExecutor {
         if (team == null) {
             player.sendMessage(ChatColor.RED + "Must be on a team to run this command.");
         } else {
-            TeamManager.getInstance().unregisterTeam(player);
+            TeamManager.getInstance().unregisterTeam(player.getUniqueId());
         }
     }
 }

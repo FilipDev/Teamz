@@ -8,15 +8,18 @@
 
 package me.pauzen.teamz.team;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class Team {
 
-    private final Set<Player>       players = new HashSet<>();
+    private final Set<UUID> players = new HashSet<>();
     private Player owner;
     private int id;
     private int kills = 0;
@@ -26,7 +29,7 @@ public class Team {
         this.id = id;
     }
 
-    public Set<Player> getPlayers() {
+    public Set<UUID> getPlayers() {
         return players;
     }
 
@@ -53,30 +56,35 @@ public class Team {
     @Override
     public String toString() {
         String out = "[Team<" + id + ">]:";
-        for (Player player : players) {
-            out += " " + player.getName();
+        for (UUID uuid : players) {
+            OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+            if (player != null) {
+                out += " " + (player.isOnline() ? player.getPlayer().isDead() ? ChatColor.RED : ChatColor.WHITE : ChatColor.RED) + player.getName();
+            }
         }
         return out;
     }
 
-    protected void removePlayer(Player player) {
-        this.players.remove(player);
-        player.sendMessage(ChatColor.RED + "You have been removed from your team.");
-        if (player == owner) {
-            TeamManager.getInstance().disbandTeam(this);
+    protected void removePlayer(OfflinePlayer player) {
+        this.players.remove(player.getUniqueId());
+        if (player.isOnline()) {
+            player.getPlayer().sendMessage(ChatColor.RED + "You have been removed from your team.");
         }
         sendMessage(ChatColor.RED + "Player " + player.getName() + " left your team.");
     }
 
     protected void addPlayer(Player player) {
-        sendMessage(ChatColor.GREEN + "Player " + player.getName() + " joined your team.");
-        this.players.add(player);
+        this.players.add(player.getUniqueId());
         player.sendMessage(ChatColor.GREEN + "Joined team.");
+        sendMessage(ChatColor.GREEN + "Player " + player.getName() + " joined your team.");
     }
 
     public void sendMessage(String message) {
-        for (Player player : getPlayers()) {
-            player.sendMessage(message);
+        for (UUID uuid : getPlayers()) {
+            Player player = Bukkit.getPlayer(uuid);
+            if (player != null) {
+                player.sendMessage(message);
+            }
         }
     }
 }

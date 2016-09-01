@@ -41,7 +41,7 @@ public class Teamz extends JavaPlugin {
 
 
     public Team getTeam(Player player) {
-        return TeamManager.getInstance().getTeams().get(player);
+        return TeamManager.getInstance().getTeams().get(player.getUniqueId());
     }
 
     public void setTeamsDisabled() {
