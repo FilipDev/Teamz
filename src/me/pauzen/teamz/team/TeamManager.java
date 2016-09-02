@@ -8,6 +8,7 @@
 
 package me.pauzen.teamz.team;
 
+import me.pauzen.teamz.request.RequestManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -17,10 +18,10 @@ import java.util.*;
 
 public class TeamManager implements Listener {
 
-    private static TeamManager     instance = new TeamManager();
-    private final  Map<UUID, Team> teams    = new HashMap<>();
-    private        int               maxSize  = 3;
-    private int currentTeams = 0;
+    private static TeamManager     instance     = new TeamManager();
+    private final  Map<UUID, Team> teams        = new HashMap<>();
+    private        int             maxSize      = 3;
+    private        int             currentTeams = 0;
 
     public static TeamManager getInstance() {
         return instance;
@@ -73,12 +74,7 @@ public class TeamManager implements Listener {
         }
         team.addPlayer(player);
         teams.put(player.getUniqueId(), team);
-    }
-
-    public void disbandTeam(Team team) {
-        for (UUID uuid : team.getPlayers()) {
-            unregisterTeam(uuid);
-        }
+        RequestManager.getInstance().forceRemove(player);
     }
 
     public int getMaxSize() {
@@ -87,5 +83,11 @@ public class TeamManager implements Listener {
 
     public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
+    }
+
+    public void disbandTeam(Team team) {
+        for (UUID uuid : team.getPlayers()) {
+            unregisterTeam(uuid);
+        }
     }
 }

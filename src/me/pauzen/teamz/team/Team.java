@@ -21,16 +21,12 @@ public class Team {
 
     private final Set<UUID> players = new HashSet<>();
     private Player owner;
-    private int id;
+    private int    id;
     private int kills = 0;
 
     protected Team(Player owner, int id) {
         this.owner = owner;
         this.id = id;
-    }
-
-    public Set<UUID> getPlayers() {
-        return players;
     }
 
     public Player getOwner() {
@@ -39,6 +35,10 @@ public class Team {
 
     public int getSize() {
         return getPlayers().size();
+    }
+
+    public Set<UUID> getPlayers() {
+        return players;
     }
 
     public int getId() {
@@ -73,12 +73,6 @@ public class Team {
         sendMessage(ChatColor.RED + "Player " + player.getName() + " left your team.");
     }
 
-    protected void addPlayer(Player player) {
-        this.players.add(player.getUniqueId());
-        player.sendMessage(ChatColor.GREEN + "Joined team.");
-        sendMessage(ChatColor.GREEN + "Player " + player.getName() + " joined your team.");
-    }
-
     public void sendMessage(String message) {
         for (UUID uuid : getPlayers()) {
             Player player = Bukkit.getPlayer(uuid);
@@ -86,5 +80,11 @@ public class Team {
                 player.sendMessage(message);
             }
         }
+    }
+
+    protected void addPlayer(Player player) {
+        this.players.add(player.getUniqueId());
+        player.sendMessage(ChatColor.GREEN + "Joined team.");
+        sendMessage(ChatColor.GREEN + "Player " + player.getName() + " joined your team.");
     }
 }

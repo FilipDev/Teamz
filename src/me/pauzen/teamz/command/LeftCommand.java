@@ -19,7 +19,8 @@ public class LeftCommand extends TeamCommandExecutor {
         Set<Team> teams = new HashSet<>();
         for (Team team : TeamManager.getInstance().getTeams().values()) {
             for (UUID member : team.getPlayers()) {
-                if (Bukkit.getPlayer(member).getLocation().getWorld().getName().equals("uhcworld")) {
+                Player memberPlayer = Bukkit.getPlayer(member);
+                if (memberPlayer != null && memberPlayer.getLocation().getWorld().getName().equals("uhcworld")) {
                     teams.add(team);
                 }
             }

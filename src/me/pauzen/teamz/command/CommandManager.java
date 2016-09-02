@@ -56,7 +56,8 @@ public class CommandManager implements CommandExecutor {
                         team.sendMessage(player.getName() + ": " + messageBuilder.toString());
                     }
                 }
-            } else {
+            }
+            else {
                 commandSender.sendMessage(ChatColor.RED + "Please add a message after the command.");
             }
         }
@@ -67,7 +68,8 @@ public class CommandManager implements CommandExecutor {
                 if (team != null) {
                     String location = "x= " + player.getLocation().getBlockX() + " y=" + player.getLocation().getBlockY() + " z=" + player.getLocation().getBlockZ();
                     team.sendMessage(player.getName() + " sent out their coordinates: " + location);
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "You are not in a team.");
                 }
             }
@@ -87,19 +89,22 @@ public class CommandManager implements CommandExecutor {
                         return true;
                     }
                     commandSender.sendMessage(ChatColor.RED + "Subcommand not found.");
-                } else {
+                }
+                else {
                     String[] newArgs = Arrays.copyOfRange(args, 1, args.length);
                     if (commandSender instanceof Player) {
                         Player sender = (Player) commandSender;
                         if (sender.getWorld().getName().equals("SPAWN")) {
                             executor.onCommand(sender, newArgs);
-                        } else {
+                        }
+                        else {
                             sender.sendMessage(ChatColor.RED + "Command cannot be executed in this world.");
                         }
                     }
                     executor.onCommand(commandSender, newArgs);
                 }
-            } else {
+            }
+            else {
                 commandSender.sendMessage(ChatColor.RED + "Please specify a valid subcommand.");
                 for (String subcommand : teamCommands.keySet()) {
                     commandSender.sendMessage("/team " + subcommand);

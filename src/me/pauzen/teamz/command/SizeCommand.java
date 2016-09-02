@@ -24,7 +24,8 @@ public class SizeCommand extends TeamCommandExecutor {
                     player.sendMessage(ChatColor.RED + "Must input a number.");
                 }
             }
-        } else {
+        }
+        else {
             player.sendMessage(ChatColor.RED + "You don't have permission for this command.");
         }
     }

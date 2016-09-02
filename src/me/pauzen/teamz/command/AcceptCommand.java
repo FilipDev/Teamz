@@ -16,7 +16,8 @@ public class AcceptCommand extends TeamCommandExecutor {
         Request request = RequestManager.getInstance().getRequest(player);
         if (request != null) {
             TeamManager.getInstance().registerTeam(player, request.getTeam());
-        } else {
+        }
+        else {
             player.sendMessage(ChatColor.RED + "You don't have a pending invite.");
         }
     }

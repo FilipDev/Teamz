@@ -21,16 +21,20 @@ public class KickCommand extends TeamCommandExecutor {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
                         TeamManager.getInstance().unregisterTeam(target.getUniqueId());
-                    } else {
+                    }
+                    else {
                         player.sendMessage(ChatColor.RED + "You must specify a valid player to kick.");
                     }
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "You must specify a player to kick.");
                 }
-            } else {
+            }
+            else {
                 player.sendMessage(ChatColor.RED + "You must be the team owner to execute this command.");
             }
-        } else {
+        }
+        else {
             player.sendMessage(ChatColor.RED + "You aren't on a team.");
         }
     }

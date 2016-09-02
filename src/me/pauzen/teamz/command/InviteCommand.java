@@ -22,19 +22,24 @@ public class InviteCommand extends TeamCommandExecutor {
                     if (target != null) {
                         if (target != player) {
                             RequestManager.getInstance().sendRequest(player, target, team);
-                        } else {
+                        }
+                        else {
                             player.sendMessage(ChatColor.RED + "You cannot send a request to yourself...");
                         }
-                    } else {
+                    }
+                    else {
                         player.sendMessage(ChatColor.RED + "Player not found.");
                     }
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "Please specify a player.");
                 }
-            } else {
+            }
+            else {
                 player.sendMessage(ChatColor.RED + "Only the team owner can invite people..");
             }
-        } else {
+        }
+        else {
             player.sendMessage(ChatColor.RED + "You aren't in a team.");
         }
     }

@@ -16,7 +16,8 @@ public class DenyCommand extends TeamCommandExecutor {
         if (request != null) {
             RequestManager.getInstance().declined(player);
             player.sendMessage(ChatColor.YELLOW + "Declined team invite.");
-        } else {
+        }
+        else {
             player.sendMessage(ChatColor.RED + "You don't have a pending invite.");
         }
     }

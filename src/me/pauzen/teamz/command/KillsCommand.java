@@ -26,11 +26,13 @@ public class KillsCommand extends TeamCommandExecutor {
         Team team = Teamz.getInstance().getTeam(target);
         if (team != null) {
             player.sendMessage(StringUtils.addColors("%s has %s kills.", ChatColor.GRAY, ChatColor.WHITE, team, team.getKills()));
-        } else {
+        }
+        else {
             if (target == player) {
                 player.sendMessage(ChatColor.RED + "You don't have a team yet.");
                 player.sendMessage(ChatColor.YELLOW + "You can create a team with the command " + ChatColor.GREEN + "/team create");
-            } else {
+            }
+            else {
                 player.sendMessage(ChatColor.RED + target.getName() + " doesn't have a team.");
             }
         }

@@ -13,9 +13,11 @@ public class LastCommand extends TeamCommandExecutor {
     @Override
     public void onCommand(CommandSender sender, String[] args) {
         if (sender.hasPermission("teamz.op")) {
+            //TODO
             TeamManager.getInstance().autoPlace(Bukkit.getWorld("SPAWN").getPlayers());
             sender.sendMessage(ChatColor.GREEN + "Autoplaced all non-teamed players in their own teams.");
-        } else {
+        }
+        else {
             sender.sendMessage(ChatColor.RED + "You don't have permission to run this command.");
         }
     }

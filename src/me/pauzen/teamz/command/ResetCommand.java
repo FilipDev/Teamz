@@ -14,7 +14,8 @@ public class ResetCommand extends TeamCommandExecutor {
         if (sender.hasPermission("teamz.op")) {
             TeamManager.getInstance().clearTeams();
             sender.sendMessage(ChatColor.GREEN + "Reset all teams.");
-        } else {
+        }
+        else {
             sender.sendMessage(ChatColor.RED + "You don't have permission to run this command.");
         }
     }

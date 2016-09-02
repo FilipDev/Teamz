@@ -14,7 +14,8 @@ public class CreateCommand extends TeamCommandExecutor {
     public void onCommand(Player player, String[] args) {
         if (Teamz.getInstance().isTeamsEnabled()) {
             TeamManager.getInstance().createTeam(player);
-        } else {
+        }
+        else {
             player.sendMessage(ChatColor.RED + "Teams are disabled at this time.");
         }
     }

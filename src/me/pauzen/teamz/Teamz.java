@@ -20,8 +20,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Teamz extends JavaPlugin {
 
-    private static Teamz           instance;
-    private        boolean         enabled = true;
+    private static Teamz instance;
+    private boolean enabled = true;
+
+    public static Teamz getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -34,11 +38,6 @@ public class Teamz extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new KillListener(), this);
         new RequestManager().register(this);
     }
-
-    public static Teamz getInstance() {
-        return instance;
-    }
-
 
     public Team getTeam(Player player) {
         return TeamManager.getInstance().getTeams().get(player.getUniqueId());

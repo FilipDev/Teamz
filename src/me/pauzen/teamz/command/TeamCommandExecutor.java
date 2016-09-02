@@ -4,14 +4,15 @@
 
 package me.pauzen.teamz.command;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public abstract class TeamCommandExecutor {
 
-    public void onCommand(Player player, String[] args) {}
+    public void onCommand(Player player, String[] args) {
+    }
 
-    public void onCommand(CommandSender sender, String[] args) {}
+    public void onCommand(CommandSender sender, String[] args) {
+    }
 
 }

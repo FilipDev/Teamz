@@ -13,9 +13,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class Request {
-    private Team team;
+    private Team   team;
     private Player recipient;
-    private long sentTimestamp;
+    private long   sentTimestamp;
 
     public Request(Team team, Player recipient) {
         this.team = team;
